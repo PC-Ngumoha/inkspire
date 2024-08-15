@@ -1,7 +1,12 @@
+import Navbar from "./components/Navbar/Navbar"
 
 const App = () => {
   return (
-    <h1>Welcome to Inspire</h1>
+    <>
+      <Navbar />
+      <h1>Welcome to Inkspire, the place where you get inspired</h1>
+      <a href="#"> Basic tag </a>
+    </>
   )
 }
 

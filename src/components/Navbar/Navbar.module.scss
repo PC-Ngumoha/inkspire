@@ -1,0 +1,137 @@
+@import '../../index.scss';
+
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 2rem;
+  background-color: $color-background-light;
+  height: 5rem;
+  width: 100%;
+  font-size: 1.6rem;
+
+  a {
+    transition: width 1.2s ease-in-out;
+  }
+
+  a::after {
+    width: 0;
+    content: "";
+    height: 1px;
+    background-color: $color-light;
+    border: 1px solid black;
+  }
+
+  a:hover::after {
+    width: 100%;
+  }
+
+  .pages {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .brand {
+    flex: 1;
+    display: inline-block;
+    height: 100%;
+    font-family: $brand-logo-font;
+    letter-spacing: 1.5rem;
+    line-height: 2rem;
+    text-align: center;
+    transform: translateY(-65%);
+  }
+
+  .preferences {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  // .openDropdown {
+  //   font-size: 2rem;
+  //   font-weight: bold;
+  // }
+}
+
+.dropdown {
+  display: flex;
+  padding: 1rem;
+  width: 100%;
+  flex-direction: column;
+  align-self: self-end;
+  justify-content: space-around;
+  align-items: center;
+
+  .closeDropdown {
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .pages {
+    margin-bottom: 2rem;
+  }
+
+  .preferences {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+}
+
+// Smartphones
+@media (max-width: 767px) {
+  .navbar {
+    .brand {
+      font-size: 2.2rem;
+    }
+
+    .pages {
+      display: none;
+    }
+
+    .preferences {
+      display: none;
+    }
+  }
+}
+
+// Tablets
+@media (min-width: 768px) and (max-width: 1024px) {
+  .navbar {
+    .brand {
+      font-size: 2.8rem;
+    }
+
+    .pages {
+      display: none;
+    }
+  }
+
+  .dropdown {
+    .preferences {
+      display: none;
+    }
+  }
+}
+
+// Desktop
+@media (min-width: 1025px) {
+  .navbar {
+    .brand {
+      font-size: 3rem;
+    }
+
+    .openDropdown {
+      display: none;
+    }
+  }
+}
