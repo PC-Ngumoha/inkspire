@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { GiQuillInk, GiShoppingBag } from 'react-icons/gi';
 import { CiMenuFries } from 'react-icons/ci';
 import { IoClose } from 'react-icons/io5';
@@ -10,24 +11,24 @@ const routes = {
     {
       id: 1,
       name: 'Home',
-      path: '#'
+      path: '/'
     },
     {
       id: 2,
       name: 'Shop',
-      path: '#'
+      path: '/shop'
     }
   ],
   preferences: [
     {
       id: 3,
       name: 'Wishlist',
-      path: '#'
+      path: '/wishlist'
     },
     {
       id: 4,
       name: <GiShoppingBag />,
-      path: '#'
+      path: '/cart'
     }
   ]
 }
@@ -42,7 +43,7 @@ const Navbar = () => {
         {
           routes.pages.map((item) => (
             <li key={ item.id } className={ styles.navOption }>
-              <a href={ item.path }> { item.name }</a>
+              <Link to={ item.path }> { item.name }</Link>
             </li>
           ))
         }
@@ -57,13 +58,13 @@ const Navbar = () => {
             if (item.id === 4) {
               return (
                 <li key={ item.id } className={ styles.cart }>
-                  <a href={ item.path }> { item.name } 0 </a>
+                  <Link to={ item.path }> { item.name } 0 </Link>
                 </li>
               )
             } else {
               return (
                 <li key={ item.id } className={ styles.navOption }>
-                  <a href={ item.path }> { item.name }</a>
+                  <Link to={ item.path }> { item.name }</Link>
                 </li>
               )
             }
@@ -85,7 +86,7 @@ const Navbar = () => {
         {
           routes.pages.map((item) => (
             <li key={ item.id } className={ styles.items }>
-              <a href={ item.path }> { item.name }</a>
+              <Link to={ item.path }> { item.name }</Link>
             </li>
           ))
         }
@@ -96,13 +97,13 @@ const Navbar = () => {
             if (item.id === 4) {
               return (
                 <li key={ item.id } className={ styles.items }>
-                  <a href={ item.path }> { item.name } 0 </a>
+                  <Link to={ item.path }> { item.name } 0 </Link>
                 </li>
               )
             } else {
               return (
                 <li key={ item.id }>
-                  <a href={ item.path }> { item.name }</a>
+                  <Link to={ item.path }> { item.name }</Link>
                 </li>
               )
             }
