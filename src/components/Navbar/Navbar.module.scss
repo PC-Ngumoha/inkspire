@@ -13,7 +13,7 @@
   width: 100%;
   font-size: 1.6rem;
   font-weight: 300;
-  margin-bottom: 2rem;
+  margin-bottom: .2rem;
   box-shadow: .1rem .1rem 1rem $contrast-background-light;
 
   // Utility class - Helps us group nav items
@@ -92,7 +92,7 @@
   border-bottom: 1px solid $contrast-background-light;
   box-shadow: .1rem .4rem 2rem $contrast-background-light;
   border-bottom-right-radius: 6rem;
-  margin-bottom: 1rem;
+  margin-bottom: .2rem;
 
   // Button to close dropdown component.
   .closeDropdown {

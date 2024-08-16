@@ -1,8 +1,14 @@
-
+import Banner from '../../components/Banner/Banner';
+// import styles from './Shop.module.scss';
 
 const Shop = () => {
   return (
-    <h1>Shop page</h1>
+    <>
+      <Banner displayText='Shop' />
+      <main>
+
+      </main>
+    </>
   );
 };
 
