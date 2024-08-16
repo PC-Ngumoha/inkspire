@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { GiQuillInk, GiHamburgerMenu, GiShoppingBag } from 'react-icons/gi';
+import { GiQuillInk, GiShoppingBag } from 'react-icons/gi';
+import { CiMenuFries } from 'react-icons/ci';
 import { IoClose } from 'react-icons/io5';
 import styles from './Navbar.module.scss';
+import { concatClasses } from '../../utils/helpers';
 
 const routes = {
   pages: [
@@ -35,10 +37,11 @@ const Navbar = () => {
 
   return  !open ? (
     <nav className={ styles.navbar } role="navigation" aria-label="main navigation">
-      <ul className={ styles.pages }>
+      <ul className={
+        concatClasses(styles.pages, styles.group) }>
         {
           routes.pages.map((item) => (
-            <li key={ item.id }>
+            <li key={ item.id } className={ styles.navOption }>
               <a href={ item.path }> { item.name }</a>
             </li>
           ))
@@ -47,18 +50,19 @@ const Navbar = () => {
       <span className={ styles.brand }>
         <GiQuillInk /> Inkspire
       </span>
-      <ul className={ styles.preferences }>
+      <ul className={
+        concatClasses(styles.preferences, styles.group) }>
         {
           routes.preferences.map((item) => {
             if (item.id === 4) {
               return (
-                <li key={ item.id }>
+                <li key={ item.id } className={ styles.cart }>
                   <a href={ item.path }> { item.name } 0 </a>
                 </li>
               )
             } else {
               return (
-                <li key={ item.id }>
+                <li key={ item.id } className={ styles.navOption }>
                   <a href={ item.path }> { item.name }</a>
                 </li>
               )
@@ -66,7 +70,7 @@ const Navbar = () => {
           })
         }
       </ul>
-      <GiHamburgerMenu
+      <CiMenuFries
         className={ styles.openDropdown }
         onClick={ () => setOpen(true) }
       />
@@ -80,7 +84,7 @@ const Navbar = () => {
       <ul className={ styles.pages }>
         {
           routes.pages.map((item) => (
-            <li key={ item.id }>
+            <li key={ item.id } className={ styles.items }>
               <a href={ item.path }> { item.name }</a>
             </li>
           ))
@@ -91,7 +95,7 @@ const Navbar = () => {
           routes.preferences.map((item) => {
             if (item.id === 4) {
               return (
-                <li key={ item.id }>
+                <li key={ item.id } className={ styles.items }>
                   <a href={ item.path }> { item.name } 0 </a>
                 </li>
               )

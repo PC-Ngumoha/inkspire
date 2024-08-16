@@ -4,7 +4,7 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <h1>Welcome to Inkspire, the place where you get inspired</h1>
+      <p>Welcome to Inkspire, the place where you get inspired</p>
       <a href="#"> Basic tag </a>
     </>
   )

@@ -1,91 +1,125 @@
 @import '../../index.scss';
 
-
+// NAVBAR COMPONENT
 .navbar {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: center;
   padding: 2rem;
+  color: $color-light;
   background-color: $color-background-light;
   height: 5rem;
   width: 100%;
   font-size: 1.6rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  box-shadow: .1rem .1rem 1rem $contrast-background-light;
 
-  a {
-    transition: width 1.2s ease-in-out;
-  }
-
-  a::after {
-    width: 0;
-    content: "";
-    height: 1px;
-    background-color: $color-light;
-    border: 1px solid black;
-  }
-
-  a:hover::after {
-    width: 100%;
-  }
-
-  .pages {
+  // Utility class - Helps us group nav items
+  .group {
     flex: 1;
     height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;
+    align-items: baseline;
+
+    li {
+      list-style: none;
+    }
   }
 
+  // Utitlity class - Groups nav items for special slider effect
+  .navOption {
+    position: relative;
+
+    &::after {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      background-color: $color-light;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      transition: width .8s ease-in-out;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+
+  // CART navbar item
+  .cart {
+    font-size: 1.8rem;
+    display: inline-block;
+    transition: all .8s ease-in-out;
+
+    &:hover {
+      transform: scale(1.5);
+    }
+  }
+
+  // Logo
   .brand {
     flex: 1;
-    display: inline-block;
-    height: 100%;
     font-family: $brand-logo-font;
-    letter-spacing: 1.5rem;
-    line-height: 2rem;
-    text-align: center;
-    transform: translateY(-65%);
-  }
-
-  .preferences {
-    flex: 1;
     height: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+    letter-spacing: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
   }
 
-  // .openDropdown {
-  //   font-size: 2rem;
-  //   font-weight: bold;
-  // }
+  // Button to open dropdown component
+  .openDropdown {
+    font-size: 2rem;
+    font-weight: bold;
+    align-self: baseline;
+  }
 }
 
+// DROPDOWN COMPONENT
 .dropdown {
   display: flex;
   padding: 1rem;
   width: 100%;
   flex-direction: column;
-  align-self: self-end;
   justify-content: space-around;
   align-items: center;
+  font-size: 1.2rem;
+  border-bottom: 1px solid $contrast-background-light;
+  box-shadow: .1rem .4rem 2rem $contrast-background-light;
+  border-bottom-right-radius: 6rem;
+  margin-bottom: 1rem;
 
+  // Button to close dropdown component.
   .closeDropdown {
     font-weight: bold;
     font-size: 2rem;
     margin-bottom: 2rem;
   }
 
-  .pages {
-    margin-bottom: 2rem;
-  }
-
-  .preferences {
+  li {
+    display: block;
     margin-bottom: 2rem;
     text-align: center;
   }
+
+  // Utility class - used to group dropdown items for special effect
+  .items {
+    padding: 0;
+    transition: all .8s ease-in-out;
+
+    &:hover {
+      transform: scale(1.5);
+    }
+  }
 }
+
+
+// BREAKPOINTS
 
 // Smartphones
 @media (max-width: 767px) {
