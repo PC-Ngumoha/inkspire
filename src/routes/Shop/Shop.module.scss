@@ -1,5 +1,10 @@
 @import '../../index.scss';
 
+.btnSelect {
+  background-color: $color-light !important;
+  color: white !important;
+}
+
 // SHOP PAGE
 .shop {
   width: 60%;
@@ -33,12 +38,21 @@
     width: fit-content;
     height: 2.5rem;
     padding: .5rem;
-    background-color: transparent;
     border: .2rem solid $contrast-background-light;
     border-radius: 1rem;
     box-shadow: 0px 0px 4px $contrast-background-light;
     font-family: 'Inter', sans-serif;
+  }
+
+  // Utility classes to simulate normal and selected states of filter buttons
+  .normal {
+    background-color: transparent;
     color: $color-light;
+  }
+
+  .selected {
+    background-color: $color-light;
+    color: white;
   }
 
   // Search bar
@@ -59,6 +73,7 @@
     }
   }
 
+  // Containing books
   .container {
     position: relative;
     width: 100%;
@@ -71,6 +86,7 @@
     overflow: auto;
   }
 
+  // pagination controls
   .controls {
     width: 100%;
     height: fit-content;

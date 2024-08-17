@@ -1,55 +1,86 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Banner from '../../components/Banner/Banner';
 import { FaSearch }  from 'react-icons/fa';
 import { IoChevronBackOutline,
   IoChevronForwardOutline
 } from 'react-icons/io5';
+// import { concatClasses } from '../../utils/helpers';
 import sample from '../../assets/sample.jpg';
 import styles from './Shop.module.scss';
 
 
 
-const filterFields = {
+const fields = {
   categories: [
     {
       id: 1,
-      name: 'All'
+      name: 'All',
+      selected: false
     },
     {
       id: 2,
-      name: 'Arts & Creativity'
+      name: 'Arts & Creativity',
+      selected: false
     },
     {
       id: 3,
-      name: 'Historical & Cultural'
+      name: 'Historical & Cultural',
+      selected: false
     },
     {
       id: 4,
-      name: 'Romance & Relationships'
+      name: 'Romance & Relationships',
+      selected: false
     }
   ],
   priceRange: [
     {
       id: 1 ,
-      name: 'All'
+      name: 'All',
+      selected: false
     },
     {
       id: 2 ,
-      name: 'Less than ₦1000'
+      name: 'Less than ₦1000',
+      selected: false
     },
     {
       id: 3,
-      name: '₦1000 - ₦4000'
+      name: '₦1000 - ₦4000',
+      selected: false
     },
     {
       id: 4,
-      name: 'Above ₦4000'
+      name: 'Above ₦4000',
+      selected: false
     }
   ]
 }
 
 const Shop = () => {
   const navigate = useNavigate();
+  const [categories, setCategories] = useState(fields.categories);
+  const [ranges, setRanges] = useState(fields.priceRange);
+  const [currentCategory, setCurrentCategory] = useState(0);
+  const [priceRange, setPriceRange] = useState(0);
+
+  useEffect(() => {
+    // setting selected category
+    setCategories((prev) => {
+      for (let i = 0; i < prev.length; i++) prev[i].selected = false;
+      prev[currentCategory].selected = true;
+      return [...prev];
+    });
+
+    // updating the current selected price range filter
+    setRanges((prev) => {
+      for (let i = 0; i < prev.length; i++) prev[i].selected = false;
+      prev[priceRange].selected = true;
+      return [...prev];
+    });
+
+  }, [currentCategory, priceRange]);
 
   return (
     <>
@@ -70,10 +101,15 @@ const Shop = () => {
               Categories
             </span>
             {
-              filterFields.categories.map((filter) => (
+              categories.map((filter, idx) => (
                 <button
                   key={filter.id}
-                  className={ styles.filterButtons }
+                  className={
+                    filter.selected
+                    ? styles.selected
+                    : styles.normal
+                  }
+                  onClick={ () => setCurrentCategory(idx) }
                 >
                   {filter.name}
                 </button>
@@ -85,10 +121,15 @@ const Shop = () => {
               Filter by price
             </span>
             {
-              filterFields.priceRange.map((filter) => (
+              ranges.map((filter, idx) => (
                 <button
                   key={filter.id}
-                  className={ styles.filterButtons }
+                  className={
+                    filter.selected
+                    ? styles.selected
+                    : styles.normal
+                  }
+                  onClick={ () => setPriceRange(idx) }
                 >
                   {filter.name}
                 </button>
