@@ -1,31 +1,11 @@
 import { useState } from "react";
+import { useLoaderData } from 'react-router-dom';
 import StarRatings from "react-star-ratings";
 import Banner from "../../components/Banner/Banner";
 import styles from './Book.module.scss';
 
-const sample = {
-  id: 10,
-  title: "781-xwlj-9538-5831-lenn",
-  author: "Hamel Belfelt",
-  price: 699.37,
-  description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.\n\nVestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.",
-  rating: 2.5,
-  category: "Mind & Spirit",
-  tags: [
-    "Mind & Spirit",
-    "Historical & Cultural",
-    "Romance & Relationships"
-  ],
-  images: [
-    "http://dummyimage.com/110x160.png/ff4444/ffffff",
-    "http://dummyimage.com/201x147.png/dddddd/000000",
-    "http://dummyimage.com/218x135.png/5fa2dd/ffffff"
-  ],
-  instock: 9,
-  date_published: 1994
-}
-
 const Book = () => {
+  const book = useLoaderData();
   const [current, setCurrent] = useState(0);
 
   return (
@@ -35,7 +15,7 @@ const Book = () => {
         <div className={ styles.image }>
           <div className={ styles.preview}>
             {
-              sample.images.map((image, idx) => (
+              book.images.map((image, idx) => (
                 <img
                   key={idx}
                   src={image}
@@ -45,25 +25,25 @@ const Book = () => {
             }
           </div>
           <img
-            src={sample.images[current]}
+            src={book.images[current]}
             className={ styles.main }
           />
         </div>
         <div className={ styles.body }>
-          <span className={ styles.author }>By {sample.author}</span>
-          <span className={ styles.title }>{sample.title}</span>
+          <span className={ styles.author }>By {book.author}</span>
+          <span className={ styles.title }>{book.title}</span>
           <span>
             <StarRatings
-              rating={sample.rating}
+              rating={book.rating}
               starDimension="15px"
               starSpacing="1px"
-            /> ({sample.rating})
+            /> ({book.rating})
           </span>
-          <span className={ styles.price}>₦{sample.price}</span>
-          <p className={ styles.description}>{sample.description}</p>
+          <span className={ styles.price}>₦{book.price}</span>
+          <p className={ styles.description}>{book.description}</p>
           <hr />
           <label htmlFor="quantity">
-            <strong>{sample.instock}</strong> in stock
+            <strong>{book.instock}</strong> in stock
             <input
               id="quantity"
               type="number"
@@ -71,18 +51,18 @@ const Book = () => {
               aria-label="quantity"
               min={1}
               defaultValue={1}
-              max={sample.instock}
+              max={book.instock}
             />
           </label>
           <div>
-            <button>Buy Now</button>
+            <button>Add To Wishlist</button>
             <button>Add To Cart</button>
           </div>
           <hr />
           <div className={ styles.extra }>
-            <span>Year Published:</span> {sample.date_published} <br/>
-            <span>Category:</span> {sample.category} <br/>
-            <span>Tags:</span> {sample.tags.join(', ')} <br/>
+            <span>Year Published:</span> {book.date_published} <br/>
+            <span>Category:</span> {book.category} <br/>
+            <span>Tags:</span> {book.tags.join(', ')} <br/>
           </div>
         </div>
       </section>

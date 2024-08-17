@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLoaderData } from 'react-router-dom';
 import Banner from '../../components/Banner/Banner';
 import { FaSearch }  from 'react-icons/fa';
-import { IoChevronBackOutline,
-  IoChevronForwardOutline
-} from 'react-icons/io5';
-// import { concatClasses } from '../../utils/helpers';
-import sample from '../../assets/sample.jpg';
 import styles from './Shop.module.scss';
+
+// COMMMENTED OUT TILL I IMPLEMENT PAGINATION
+// import { IoChevronBackOutline,
+//   IoChevronForwardOutline
+// } from 'react-icons/io5';
 
 
 
@@ -60,6 +60,9 @@ const fields = {
 
 const Shop = () => {
   const navigate = useNavigate();
+  const books = useLoaderData();
+
+  // Related to the filter fields
   const [categories, setCategories] = useState(fields.categories);
   const [ranges, setRanges] = useState(fields.priceRange);
   const [currentCategory, setCurrentCategory] = useState(0);
@@ -79,7 +82,6 @@ const Shop = () => {
       prev[priceRange].selected = true;
       return [...prev];
     });
-
   }, [currentCategory, priceRange]);
 
   return (
@@ -138,30 +140,39 @@ const Shop = () => {
           </div>
         </aside>
         <article>
-          <span>Some text will be displayed here</span>
+          <strong>Currently displaying &quot;{
+            categories[currentCategory].name
+          }&quot; books</strong>
           <div className={ styles.container }>
-
-            <div
-              className={ styles.card }
-              onClick={() => navigate('/book/1')}>
-              <div className={ styles.cardImage }>
-                <img src={ sample } alt='Sample Image'/>
+          {
+            books.map(book => (
+              <div
+                key={ book.id }
+                className={ styles.card }
+                onClick={() => navigate(`/book/${book.id}`)}
+              >
+                <div className={ styles.cardImage }>
+                  <img src={ book.images[0] } />
+                </div>
+                <div className={ styles.cardInfo }>
+                  <span className={ styles.title }>{ book.title }</span>
+                  <span className={ styles.price }>₦{ book.price }</span>
+                </div>
               </div>
-              <div className={ styles.cardInfo }>
-                <span className={ styles.title }>Book of Mormon</span>
-                <span className={ styles.price }>₦1000</span>
-              </div>
-            </div>
+            ))
+          }
 
           </div>
-          <div className={ styles.controls }>
+          {/* THIS PART WILL BE USEFUL
+          WHEN I IMPLEMENT PAGINATION */}
+          {/* <div className={ styles.controls }>
             <button>
               <IoChevronBackOutline />
             </button>
             <button>
               <IoChevronForwardOutline />
             </button>
-          </div>
+          </div> */}
         </article>
       </main>
     </>
