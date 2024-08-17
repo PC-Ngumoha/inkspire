@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import Banner from '../../components/Banner/Banner';
 import { FaSearch }  from 'react-icons/fa';
 import { IoChevronBackOutline,
@@ -48,6 +49,8 @@ const filterFields = {
 }
 
 const Shop = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <Banner displayText='Shop' />
@@ -97,27 +100,9 @@ const Shop = () => {
           <span>Some text will be displayed here</span>
           <div className={ styles.container }>
 
-            <div className={ styles.card }>
-              <div className={ styles.cardImage }>
-                <img src={ sample } alt='Sample Image'/>
-              </div>
-              <div className={ styles.cardInfo }>
-                <span className={ styles.title }>Book of Mormon</span>
-                <span className={ styles.price }>₦1000</span>
-              </div>
-            </div>
-
-            <div className={ styles.card }>
-              <div className={ styles.cardImage }>
-                <img src={ sample } alt='Sample Image'/>
-              </div>
-              <div className={ styles.cardInfo }>
-                <span className={ styles.title }>Book of Mormon</span>
-                <span className={ styles.price }>₦1000</span>
-              </div>
-            </div>
-
-            <div className={ styles.card }>
+            <div
+              className={ styles.card }
+              onClick={() => navigate('/book/1')}>
               <div className={ styles.cardImage }>
                 <img src={ sample } alt='Sample Image'/>
               </div>
