@@ -1,0 +1,91 @@
+@import '../../index.scss';
+
+// WISHLIST PAGE
+
+.wishlist {
+  width: 60%;
+  margin: 2rem auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+// CARDS
+
+.card {
+  width: 30%;
+  height: 30rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  .cardImage {
+    width: 100%;
+    height: 100%;
+    background-color: $contrast-background-light;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+    img {
+      width: 70%;
+      height: 80%;
+      object-fit: auto;
+    }
+  }
+
+  .cardInfo {
+    height: fit-content;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .title {
+      font-weight: 500;
+      font-size: 1rem;
+      line-height: 1.3rem;
+      letter-spacing: .1rem;
+    }
+  }
+
+  button {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    border: 0;
+    outline: 0;
+    color: $color-light;
+    font-size: 2rem;
+  }
+}
+
+
+// BREAKPOINTS
+
+// Smartphones
+@media (max-width: 767px) {
+  .wishlist {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 80%;
+  }
+}
+
+// Tablets
+@media (min-width: 768px) and (max-width: 1024px) {
+  .wishlist {
+    width: 80%;
+  }
+}
+
+// Desktop
+@media (min-width: 1025px) {}
