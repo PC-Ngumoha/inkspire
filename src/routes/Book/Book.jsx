@@ -9,7 +9,7 @@ const sample = {
   author: "Hamel Belfelt",
   price: 699.37,
   description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.\n\nVestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.",
-  rating: 2.0,
+  rating: 2.5,
   category: "Mind & Spirit",
   tags: [
     "Mind & Spirit",
@@ -44,23 +44,26 @@ const Book = () => {
               ))
             }
           </div>
-          <img src={sample.images[current]} />
+          <img
+            src={sample.images[current]}
+            className={ styles.main }
+          />
         </div>
-        <div>
-          <span>By {sample.author}</span>
+        <div className={ styles.body }>
+          <span className={ styles.author }>By {sample.author}</span>
           <span className={ styles.title }>{sample.title}</span>
           <span>
             <StarRatings
               rating={sample.rating}
               starDimension="15px"
-              starSpacing="3px"
+              starSpacing="1px"
             /> ({sample.rating})
           </span>
           <span className={ styles.price}>₦{sample.price}</span>
           <p className={ styles.description}>{sample.description}</p>
           <hr />
           <label htmlFor="quantity">
-            {sample.instock} in stock
+            <strong>{sample.instock}</strong> in stock
             <input
               id="quantity"
               type="number"
@@ -79,7 +82,7 @@ const Book = () => {
           <div className={ styles.extra }>
             <span>Year Published:</span> {sample.date_published} <br/>
             <span>Category:</span> {sample.category} <br/>
-            <span>Tags:</span> {sample.tags} <br/>
+            <span>Tags:</span> {sample.tags.join(', ')} <br/>
           </div>
         </div>
       </section>

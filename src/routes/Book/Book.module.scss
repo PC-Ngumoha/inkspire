@@ -1,0 +1,169 @@
+@import '../../index.scss';
+
+// BOOK PAGE
+.book {
+  width: 60%;
+  height: fit-content;
+  margin: 1rem auto;
+  display: flex;
+
+  // Utility class - image display section
+  .image {
+    flex: 1;
+    display: flex;
+
+    // preview image subsection
+    .preview {
+      flex: 1;
+      width: 25%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+
+      img {
+        width: 70%;
+        height: 10rem;
+        align-self: stretch;
+        margin-bottom: 1rem;
+        object-fit: auto;
+      }
+    }
+
+    // main image subsection
+    .main {
+      flex: 2;
+      width: 70%;
+      height: 45rem;
+    }
+  }
+
+  // Book description
+  .body {
+    flex: 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .author {
+      text-transform: capitalize;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: bold;
+      color: grey;
+      letter-spacing: .1rem;
+    }
+
+    .title {
+      text-transform: uppercase;
+      font-size: 3rem;
+      letter-spacing: .3rem;
+      font-weight: 300;
+      color: $color-light;
+    }
+
+    .price {
+      font-size: 2rem;
+      color: $color-light;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    .description {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: grey;
+      letter-spacing: .5px;
+    }
+
+    // Divider lines
+    hr {
+      border: .1px solid $contrast-background-light;
+      margin: 1rem 0;
+    }
+
+    // useful for the in-stock section
+    label {
+      font-size: 1.2rem;
+    }
+
+    input[type="number"] {
+      display: block;
+      text-align: center;
+    }
+
+    // useful button styles
+    button {
+      display: inline-block;
+      margin-right: 2rem;
+      width: fit-content;
+      height: 3rem;
+      padding: .2rem;
+      background-color: $color-light;
+      color: white;
+      text-transform: capitalize;
+    }
+
+    // extra info about book
+    .extra {
+      font-size: 1.2rem;
+      color: grey;
+
+      span {
+        text-transform: uppercase;
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
+
+// BREAKPOINTS
+
+// Smartphones
+@media (max-width: 767px) {
+  .book {
+    width: 80%;
+    flex-direction: column;
+
+    .image {
+      margin-bottom: 1.5rem;
+    }
+
+    .body {
+      .title {
+        font-size: 2rem;
+      }
+
+      .price {
+        font-size: 1.5rem;
+      }
+
+      button {
+        margin-top: 1rem;
+      }
+    }
+  }
+}
+
+// Tablets
+@media (min-width: 768px) and (max-width: 1024px) {
+  .book {
+    width: 98%;
+
+    .image {
+      margin-right: 1rem;
+    }
+  }
+}
+
+// Desktop
+@media (min-width: 1025px) {
+  .book {
+
+    .image {
+      margin-right: 1rem;
+    }
+  }
+}
