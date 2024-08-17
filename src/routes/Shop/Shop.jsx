@@ -1,5 +1,9 @@
 import Banner from '../../components/Banner/Banner';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch }  from 'react-icons/fa';
+import { IoChevronBackOutline,
+  IoChevronForwardOutline
+} from 'react-icons/io5';
+import sample from '../../assets/sample.jpg';
 import styles from './Shop.module.scss';
 
 
@@ -25,15 +29,19 @@ const filterFields = {
   ],
   priceRange: [
     {
-      id: 1,
+      id: 1 ,
+      name: 'All'
+    },
+    {
+      id: 2 ,
       name: 'Less than ₦1000'
     },
     {
-      id: 2,
+      id: 3,
       name: '₦1000 - ₦4000'
     },
     {
-      id: 3,
+      id: 4,
       name: 'Above ₦4000'
     }
   ]
@@ -86,7 +94,48 @@ const Shop = () => {
           </div>
         </aside>
         <article>
-          Book grid will be displayed here
+          <span>Some text will be displayed here</span>
+          <div className={ styles.container }>
+
+            <div className={ styles.card }>
+              <div className={ styles.cardImage }>
+                <img src={ sample } alt='Sample Image'/>
+              </div>
+              <div className={ styles.cardInfo }>
+                <span className={ styles.title }>Book of Mormon</span>
+                <span className={ styles.price }>₦1000</span>
+              </div>
+            </div>
+
+            <div className={ styles.card }>
+              <div className={ styles.cardImage }>
+                <img src={ sample } alt='Sample Image'/>
+              </div>
+              <div className={ styles.cardInfo }>
+                <span className={ styles.title }>Book of Mormon</span>
+                <span className={ styles.price }>₦1000</span>
+              </div>
+            </div>
+
+            <div className={ styles.card }>
+              <div className={ styles.cardImage }>
+                <img src={ sample } alt='Sample Image'/>
+              </div>
+              <div className={ styles.cardInfo }>
+                <span className={ styles.title }>Book of Mormon</span>
+                <span className={ styles.price }>₦1000</span>
+              </div>
+            </div>
+
+          </div>
+          <div className={ styles.controls }>
+            <button>
+              <IoChevronBackOutline />
+            </button>
+            <button>
+              <IoChevronForwardOutline />
+            </button>
+          </div>
         </article>
       </main>
     </>
