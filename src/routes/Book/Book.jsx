@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import StarRatings from "react-star-ratings";
+// import { useCart } from "../../context/cart.context";
 import { useWishlist } from '../../context/wishlist.context';
 import Banner from "../../components/Banner/Banner";
 import styles from './Book.module.scss';
@@ -9,6 +10,7 @@ import styles from './Book.module.scss';
 const Book = () => {
   const book = useLoaderData();
   const { addToWishlist } = useWishlist();
+  // const { addToCart } = useCart();
   const [current, setCurrent] = useState(0);
 
   return (
@@ -67,7 +69,8 @@ const Book = () => {
             >
               Add To Wishlist
             </button>
-            <button>Add To Cart</button>
+            <button
+            >Add To Cart</button>
           </div>
           <hr />
           <div className={ styles.extra }>

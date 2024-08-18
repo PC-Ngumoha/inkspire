@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import App from './App.jsx'
 import { WishlistProvider } from './context/wishlist.context.jsx';
+import { CartProvider } from './context/cart.context.jsx';
 import { Home, Cart, Shop, Book, Wishlist } from './routes';
 import { shopDataLoader } from './routes/Shop/shop.util.js';
 import { bookDataLoader } from './routes/Book/book.util.js';
@@ -13,9 +14,11 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: (
-      <WishlistProvider>
-        <App />
-      </WishlistProvider>
+      <CartProvider>
+        <WishlistProvider>
+          <App />
+        </WishlistProvider>
+      </CartProvider>
     ),
     children: [
       {

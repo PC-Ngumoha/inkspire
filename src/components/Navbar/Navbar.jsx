@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { GiQuillInk, GiShoppingBag } from 'react-icons/gi';
 import { CiMenuFries } from 'react-icons/ci';
 import { IoClose } from 'react-icons/io5';
+import { useCart } from '../../context/cart.context';
 import styles from './Navbar.module.scss';
 import { concatClasses } from '../../utils/helpers';
 
@@ -35,6 +36,7 @@ const routes = {
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const { count } = useCart();
 
   return  !open ? (
     <nav className={ styles.navbar } role="navigation" aria-label="main navigation">
@@ -58,7 +60,7 @@ const Navbar = () => {
             if (item.id === 4) {
               return (
                 <li key={ item.id } className={ styles.cart }>
-                  <Link to={ item.path }> { item.name } 0 </Link>
+                  <Link to={ item.path }> { item.name } { count } </Link>
                 </li>
               )
             } else {
@@ -97,7 +99,7 @@ const Navbar = () => {
             if (item.id === 4) {
               return (
                 <li key={ item.id } className={ styles.items }>
-                  <Link to={ item.path }> { item.name } 0 </Link>
+                  <Link to={ item.path }> { item.name } { count } </Link>
                 </li>
               )
             } else {
