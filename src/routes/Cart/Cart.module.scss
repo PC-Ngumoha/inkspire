@@ -1,0 +1,134 @@
+@import '../../index.scss';
+
+// CART PAGE
+.cart {
+  height: 60vh;
+  width: 80%;
+  margin: 1rem auto;
+  overflow: auto;
+
+  // Used to organize the cart entries
+  table {
+    width: 100%;
+    height: fit-content;
+    color: grey;
+
+    th {
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      text-align: left;
+      width: 30%;
+      font-weight: 500;
+    }
+
+    td {
+      text-align: left;
+      margin-right: 1rem;
+    }
+
+    // Organize the book details portion of the entries table
+    .book {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+
+      img {
+        flex: 1;
+        width: 30%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      span {
+        flex: 1;
+        place-self: center;
+        padding-left: 1rem;
+        font-size: 1.2rem;
+      }
+    }
+
+    // Used to organize numeric values
+    .numeric {
+      font-size: 1.3rem;
+      letter-spacing: .2rem;
+    }
+
+    // delete button
+    .cancelButton {
+      text-align: center;
+      font-size: 2rem;
+      color: $color-light;
+    }
+  }
+}
+
+// TOTAL SECTION
+.total {
+  margin-top: 2rem;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  // Organize the total amount details
+  div {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 2.5rem;
+
+    .text {
+      letter-spacing: .3rem;
+      font-weight: 500;
+    }
+
+    .amount {
+      letter-spacing: .1rem;
+      font-weight: 300;
+    }
+  }
+
+  // Order now button
+  button {
+    margin-top: 2rem;
+    width: 30%;
+    height: 3rem;
+    background-color: $color-light;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+  }
+}
+
+// BREAKPOINTS
+
+// Smartphones
+@media (max-width: 767px) {
+  .cart {
+    table {
+      .book {
+        flex-direction: column;
+
+        span {
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  .total {
+    div {
+      width: 80%;
+    }
+
+    button {
+      width: 50%;
+    }
+  }
+}
+
+// Tablets
+@media (min-width: 768px) and (max-width: 1024px) {}
+
+// Desktop
+@media (min-width: 1025px) {}
