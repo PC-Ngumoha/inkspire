@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useLoaderData } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import StarRatings from "react-star-ratings";
+import { useWishlist } from '../../context/wishlist.context';
 import Banner from "../../components/Banner/Banner";
 import styles from './Book.module.scss';
 
 const Book = () => {
   const book = useLoaderData();
+  const { addToWishlist } = useWishlist();
   const [current, setCurrent] = useState(0);
 
   return (
@@ -55,7 +58,15 @@ const Book = () => {
             />
           </label>
           <div>
-            <button>Add To Wishlist</button>
+            <button
+              onClick={() => {
+                const { id, title, images } = book;
+                addToWishlist({ id, title, images });
+                toast('Book successfully added to wishlist !!');
+              }}
+            >
+              Add To Wishlist
+            </button>
             <button>Add To Cart</button>
           </div>
           <hr />

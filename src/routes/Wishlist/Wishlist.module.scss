@@ -65,6 +65,19 @@
   }
 }
 
+.message {
+  margin: 1rem auto;
+  width: fit-content;
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  color: $color-light;
+  box-shadow: 0 0 .2rem $contrast-background-light;
+}
+
 
 // BREAKPOINTS
 
