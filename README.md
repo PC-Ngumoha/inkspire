@@ -5,7 +5,7 @@
 
 
 
-Inspire is a simple online bookstore web application that is designed to help the average book-lover get their hands on any book they can imagine. Trust me, we don't discriminate or censor anything. All knowledge and information is simply a few clicks away with us.
+_Inkspire_ is a simple online bookstore web application that is designed to help the average book-lover get their hands on any book they can imagine. Trust me, we don't discriminate or censor anything. All knowledge and information is simply a few clicks away with us.
 
 ### Installation & Usage
 
