@@ -6,7 +6,6 @@ import StarRatings from 'react-star-ratings';
 import { Link } from 'react-router-dom';
 import styles from './Home.module.scss';
 import image from '../../assets/studying.jpg';
-import 'react-multi-carousel/lib/styles.css';
 
 
 const services = [
