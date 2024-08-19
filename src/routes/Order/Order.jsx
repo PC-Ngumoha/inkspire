@@ -28,7 +28,7 @@ const Order = () => {
           Your order has been confirmed.<br />Your books will be at your door tomorrow.
         </span>
         <span className={ styles.endNote }>Happy Reading</span>
-        <Link to='/shop' className={ styles.back }>Back</Link>
+        <Link to='/shop' className={ styles.back } replace>Back</Link>
       </section>
     </>
   );

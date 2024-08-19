@@ -93,10 +93,15 @@
     margin-top: 2rem;
     width: 30%;
     height: 3rem;
-    background-color: $color-light;
+    background-color: #213547;
     color: white;
     text-transform: uppercase;
     letter-spacing: .2rem;
+    transition: background-color .3s ease-in;
+
+    &:focus {
+      background-color: #213547e1;
+    }
   }
 }
 

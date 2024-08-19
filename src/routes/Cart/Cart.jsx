@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { IoMdClose } from 'react-icons/io';
 import { toast } from 'react-toastify';
 import Banner from "../../components/Banner/Banner";
@@ -7,7 +7,8 @@ import styles from './Cart.module.scss';
 
 const Cart = () => {
   const items = useLoaderData();
-  const { total, removeFromCart } = useCart();
+  const navigate = useNavigate();
+  const { total, removeFromCart, clearCart } = useCart();
 
   return (
     <>
@@ -61,7 +62,16 @@ const Cart = () => {
                     ₦{ total }
                   </span>
                 </div>
-                <button>
+                <button
+                  onClick={() => {
+                    // Clear cart and then you navigate to the
+                    // 'Order Confirmed' after a second
+                    setTimeout(() => {
+                      clearCart();
+                      navigate('/order');
+                    }, 1000);
+                  }}
+                >
                   Order now
                 </button>
               </div>
