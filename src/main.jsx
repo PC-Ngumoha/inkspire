@@ -1,13 +1,14 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import App from './App.jsx'
+import App from './App.jsx';
 import { WishlistProvider } from './context/wishlist.context.jsx';
 import { CartProvider } from './context/cart.context.jsx';
-import { Home, Cart, Shop, Book, Wishlist } from './routes';
-import { shopDataLoader } from './routes/Shop/shop.util.js';
-import { bookDataLoader } from './routes/Book/book.util.js';
-import { wishlistLoader } from './routes/Wishlist/wishlist.util.js'
+import { Home, Cart, Shop, Book, Wishlist, Order } from './routes';
+import { shopDataLoader } from './routes/Shop/shop.loader.js';
+import { bookDataLoader } from './routes/Book/book.loader.js';
+import { wishlistLoader } from './routes/Wishlist/wishlist.loader.js'
+import { cartDataLoader } from './routes/Cart/cart.loader.js';
 import './index.scss';
 
 const router = createBrowserRouter([
@@ -27,7 +28,8 @@ const router = createBrowserRouter([
       },
       {
         path: 'cart',
-        element: <Cart />
+        element: <Cart />,
+        loader: cartDataLoader
       },
       {
         path: 'shop',
@@ -43,13 +45,17 @@ const router = createBrowserRouter([
         path: 'wishlist',
         element: <Wishlist />,
         loader: wishlistLoader
+      },
+      {
+        path: 'order',
+        element: <Order />
       }
     ]
   }
-])
+]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <RouterProvider router={router} />
-  </StrictMode>,
+  </StrictMode>
 )

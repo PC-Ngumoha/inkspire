@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useLoaderData } from 'react-router-dom';
+import { CiSquarePlus, CiSquareMinus } from 'react-icons/ci';
 import { toast } from 'react-toastify';
 import StarRatings from "react-star-ratings";
-// import { useCart } from "../../context/cart.context";
+import { useCart } from "../../context/cart.context";
 import { useWishlist } from '../../context/wishlist.context';
 import Banner from "../../components/Banner/Banner";
 import styles from './Book.module.scss';
@@ -10,8 +11,9 @@ import styles from './Book.module.scss';
 const Book = () => {
   const book = useLoaderData();
   const { addToWishlist } = useWishlist();
-  // const { addToCart } = useCart();
+  const { addToCart } = useCart();
   const [current, setCurrent] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   return (
     <>
@@ -49,16 +51,42 @@ const Book = () => {
           <hr />
           <label htmlFor="quantity">
             <strong>{book.instock}</strong> in stock
+          </label>
+          <div>
+            <CiSquareMinus
+              className={ styles.adjustQuantity }
+              onClick={(evt) => {
+                evt.stopPropagation();
+                // Handle decrementing quantity value
+                setQuantity(
+                  (prev) => prev > 1 ? prev - 1 : prev
+                )
+              }}
+              />
             <input
               id="quantity"
               type="number"
               role="input"
               aria-label="quantity"
-              min={1}
-              defaultValue={1}
+              value={quantity}
+              onChange={(evt) => {
+                const value  = parseInt(evt.target.value);
+                if (value <= book.instock) {
+                  setQuantity(value);
+                }
+              }}
               max={book.instock}
             />
-          </label>
+            <CiSquarePlus
+              className={ styles.adjustQuantity }
+              onClick={() => {
+                // Handle incrementing quantity value
+                setQuantity(
+                  (prev) => prev < book.instock ? prev + 1 : prev
+                )
+              }}
+              />
+          </div>
           <div>
             <button
               onClick={() => {
@@ -70,7 +98,14 @@ const Book = () => {
               Add To Wishlist
             </button>
             <button
-            >Add To Cart</button>
+              onClick={() => {
+                const { id, title, images, price } = book;
+                addToCart({ id, title, images, price, quantity });
+                toast('Book successfully added to cart !!');
+              }}
+            >
+              Add To Cart
+            </button>
           </div>
           <hr />
           <div className={ styles.extra }>

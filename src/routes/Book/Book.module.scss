@@ -87,11 +87,36 @@
     // useful for the in-stock section
     label {
       font-size: 1.2rem;
+
+      & + div {
+        margin-top: .5rem;
+        display: flex;
+      }
+    }
+
+    .adjustQuantity {
+      display: inline-block;
+      font-size: 3rem;
+      color: $color-light;
     }
 
     input[type="number"] {
-      display: block;
+      display: inline-block;
+      height: 3rem;
+      width: 4rem;
       text-align: center;
+      border: .1rem solid $color-light;
+
+      :focus {
+        outline: 0;
+      }
+
+      // Hide increment & decrement buttons
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
     }
 
     // useful button styles

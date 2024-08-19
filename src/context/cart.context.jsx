@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const CartContext = createContext({});
 
-export function CartProvider({children}) {
+export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
   const [count, setCount] = useState(0);
   const [total, setTotal] = useState(0.00);
@@ -65,20 +65,17 @@ export function CartProvider({children}) {
     }
   };
 
-
-  const value = {
-    count,
-    total,
-    addToCart,
-    removeFromCart,
-    clearCart
-  }
-
   return (
-    <CartContext.Provider value={ value }>
+    <CartContext.Provider value={{
+      count,
+      total,
+      addToCart,
+      removeFromCart,
+      clearCart
+    }}>
       {children}
     </CartContext.Provider>
-  )
+  );
 }
 
 CartProvider.propTypes = {
@@ -86,4 +83,4 @@ CartProvider.propTypes = {
 };
 
 // eslint-disable-next-line
-export const useCart = useContext(cartContext);
+export const useCart = () => useContext(CartContext);
