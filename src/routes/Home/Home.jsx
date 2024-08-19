@@ -2,7 +2,7 @@
 import { IoCartOutline } from 'react-icons/io5';
 import { BsAward } from 'react-icons/bs';
 import { FiTag } from 'react-icons/fi';
-
+import StarRatings from 'react-star-ratings';
 import { Link } from 'react-router-dom';
 import styles from './Home.module.scss';
 import image from '../../assets/studying.jpg';
@@ -25,6 +25,30 @@ const services = [
     icon: <FiTag />,
     name: 'daily offers',
     body: 'Etiam consectetur, felis nec rutrum hendrerit, sapien diam mollis nunc, ac tincidunt sem odio vulputate nibh. Maecenas egestas ornare aliquet.'
+  }
+];
+
+const topBooks = [
+  {
+    id: 1,
+    title: "The art of seduction",
+    price: 610.86,
+    rating: 4.7,
+    image: "https://i.ibb.co/1J34Cy3/art-of-seduction-2.jpg"
+  },
+  {
+    id: 2,
+    title: "The 48 laws of power",
+    price: 500.86,
+    rating: 4.6,
+    image: "https://i.ibb.co/g9pGRZ7/48-laws-of-power-1.png"
+  },
+  {
+    id: 3,
+    title: "Atomic habits",
+    price: 700.86,
+    rating: 4.8,
+    image:"https://i.ibb.co/jrGbM00/atomic-habits-1.jpg"
   }
 ];
 
@@ -70,9 +94,35 @@ const Home = () => {
           ))
         }
       </section>
-      <section id='topbooks' className={ styles.topbooks }></section>
+      <section id='topbooks' className={ styles.topbooks }>
+        <h2 className={ styles.sectionHeading }>best selling items</h2>
+        <div className={ styles.books }>
+          {
+            topBooks.map((book) => (
+              <div
+                key={ book.id }
+                className={ styles.card }
+              >
+                <div className={ styles.cardImage }>
+                  <img src={ book.image } />
+                </div>
+                <div className={ styles.cardInfo }>
+                  <span className={ styles.title }>{ book.title }</span>
+                  <span>
+                    <StarRatings
+                    rating={book.rating}
+                    starDimension="10px"
+                    starSpacing=".2px"
+                  /> { book.rating }
+                  </span>
+                  <span className={ styles.price }>₦{ book.price }</span>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </section>
       <section id='categories' className={ styles.categories }></section>
-      <section id='offers' className={ styles.offers }></section>
       <section id='testimonials' className={ styles.testimonials }></section>
       <section id='cta' className={ styles.cta }></section>
     </main>
