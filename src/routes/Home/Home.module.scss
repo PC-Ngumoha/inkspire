@@ -1,0 +1,123 @@
+@import '../../index.scss';
+
+// // Smartphones
+// @media (max-width: 767px) {}
+
+// // Tablets
+// @media (min-width: 768px) and (max-width: 1024px) {}
+
+// // Desktop
+// @media (min-width: 1025px) {}
+
+
+// HERO SECTION
+
+.hero {
+  width: 100%;
+  height: 60vh;
+  background-color: $contrast-background-light;
+
+  .container {
+    padding: 1rem;
+    width: 80%;
+    height: 100%;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: space-between;
+
+    .tagline {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .heading {
+      text-align: left;
+      font-size: 4rem;
+      color: $color-light;
+      font-weight: bold;
+      font-family: $section-header-font;
+      text-transform: capitalize;
+      letter-spacing: .2rem;
+    }
+
+    .body {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: grey;
+    }
+
+    .link {
+      display: inline-block;
+      margin-top: 2rem;
+      margin-left: 0;
+      font-size: 1.2rem;
+      transition: all .7s ease-in-out;
+
+      &:hover {
+        margin-left: 2rem;
+      }
+    }
+
+    img {
+      flex: 1;
+      width: 100%;
+      object-fit: contain;
+      clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+    }
+  }
+}
+
+
+// Smartphones
+@media (max-width: 767px) {
+  .hero {
+    .container {
+      width: 100%;
+
+      .tagline {
+        text-align: center;
+        align-items: center;
+
+        .heading {
+          font-size: 2rem;
+        }
+      }
+
+      img {
+        display: none;
+      }
+    }
+  }
+}
+
+// Tablets
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hero {
+    height: fit-content;
+
+    .container {
+      width: 100%;
+      flex-direction: column;
+
+      .tagline {
+        align-items: center;
+        margin-bottom: 2rem;
+      }
+
+      img {
+        width: 50%;
+        place-self: center;
+      }
+    }
+  }
+}
+
+// Desktop
+@media (min-width: 1025px) {}
+
+
+// SERVICES SECTION
