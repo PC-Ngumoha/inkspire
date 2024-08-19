@@ -6,6 +6,8 @@ import StarRatings from 'react-star-ratings';
 import { Link } from 'react-router-dom';
 import styles from './Home.module.scss';
 import image from '../../assets/studying.jpg';
+import 'react-multi-carousel/lib/styles.css';
+
 
 const services = [
   {
@@ -52,9 +54,13 @@ const topBooks = [
   }
 ];
 
+
+
 const Home = () => {
+
   return (
     <main className={ styles.home }>
+      {/* HERO SECTION */}
       <section id='hero' className={ styles.hero }>
         <div className={ styles.container }>
           <div className={ styles.tagline }>
@@ -77,6 +83,7 @@ const Home = () => {
           />
         </div>
       </section>
+      {/* OUR SERVICES */}
       <section id='services' className={ styles.services }>
         {
           services.map((service) => (
@@ -94,6 +101,7 @@ const Home = () => {
           ))
         }
       </section>
+      {/* BEST SELLING BOOKS */}
       <section id='topbooks' className={ styles.topbooks }>
         <h2 className={ styles.sectionHeading }>best selling items</h2>
         <div className={ styles.books }>
@@ -122,8 +130,13 @@ const Home = () => {
           }
         </div>
       </section>
-      <section id='categories' className={ styles.categories }></section>
-      <section id='testimonials' className={ styles.testimonials }></section>
+      {/* WHAT OUR CUSTOMERS SAY */}
+      {/* <section id='testimonials' className={ styles.testimonials }>
+        <h2 className={ styles.sectionHeading }>what our customers say</h2>
+      </section> */}
+      <section id='categories' className={ styles.categories }>
+
+      </section>
       <section id='cta' className={ styles.cta }></section>
     </main>
   );
